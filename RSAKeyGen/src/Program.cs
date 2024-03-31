@@ -11,7 +11,7 @@ namespace RSAExtensions.ConsoleApp
     {
         private static void GenerateRSAKeyPair()
         {
-            var rsa = RSA.Create(1024);
+            var rsa = RSA.Create(2048);
             Console.WriteLine("********");
             Console.WriteLine(rsa.ExportPrivateKey(RSAKeyType.Pkcs1, true));
             Console.WriteLine("++++++++");
@@ -25,7 +25,7 @@ namespace RSAExtensions.ConsoleApp
             string plainTextBase64 = Console.ReadLine();
             //
             byte[] plainText = Convert.FromBase64String(plainTextBase64);
-            var rsa = RSA.Create(1024);
+            var rsa = RSA.Create(2048);
             //
             rsa.ImportPublicKey(RSAKeyType.Pkcs8, publicKeyPEM, true);
             //
@@ -39,7 +39,7 @@ namespace RSAExtensions.ConsoleApp
             string cipherTextBase64 = Console.ReadLine();
             //
             byte[] cipherText = Convert.FromBase64String(cipherTextBase64);
-            var rsa = RSA.Create(1024);
+            var rsa = RSA.Create(2048);
             //
             rsa.ImportPrivateKey(RSAKeyType.Pkcs1, privateKeyPEM, true);
             //
@@ -83,8 +83,8 @@ namespace RSAExtensions.ConsoleApp
             }
             catch (Exception e)
             {
-                Console.WriteLine("ERROR: " + e.Message);
-                Console.WriteLine(e.StackTrace);
+                Console.WriteLine("ERROR: " + e.GetType());
+                Console.WriteLine("STACKTRACE: " + e.StackTrace);
             }
         }
     }
