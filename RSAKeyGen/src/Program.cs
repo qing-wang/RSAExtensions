@@ -29,7 +29,7 @@ namespace RSAExtensions.ConsoleApp
             //
             rsa.ImportPublicKey(RSAKeyType.Pkcs8, publicKeyPEM, true);
             //
-            byte[] cipherText = rsa.Encrypt(plainText, RSAEncryptionPadding.OaepSHA1);
+            byte[] cipherText = rsa.Encrypt(plainText, RSAEncryptionPadding.OaepSHA256);
             string cipherTextBase64 = Convert.ToBase64String(cipherText);
             Console.WriteLine(cipherTextBase64);
         }
@@ -43,7 +43,7 @@ namespace RSAExtensions.ConsoleApp
             //
             rsa.ImportPrivateKey(RSAKeyType.Pkcs1, privateKeyPEM, true);
             //
-            byte[] plainText = rsa.Decrypt(cipherText, RSAEncryptionPadding.OaepSHA1);
+            byte[] plainText = rsa.Decrypt(cipherText, RSAEncryptionPadding.OaepSHA256);
             string plainTextBase64 = Convert.ToBase64String(plainText);
             Console.WriteLine(plainTextBase64);
         }
