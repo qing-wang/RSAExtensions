@@ -145,7 +145,12 @@ namespace TestRSAKeyGen
                     byte[] b = File.ReadAllBytes(args[2]);
                     byte[] _b = new byte[32];
                     for (int i = 0; i < _b.Length; i++)
-                        _b[i] = b[i];
+                    {
+                        if (i < b.Length)
+                            _b[i] = b[i];
+                        else
+                            _b[i] = 0x20;
+                    }
                     string s = Encrypt(publicKey, _b);
                     Console.WriteLine(s);
                     byte[] b2 = Convert.FromBase64String(s);

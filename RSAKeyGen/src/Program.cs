@@ -13,10 +13,10 @@ namespace RSAExtensions.ConsoleApp
         {
             var rsa = RSA.Create(2048);
             Console.WriteLine("********");
-            Console.WriteLine(rsa.ExportPrivateKey(RSAKeyType.Pkcs1, true));
+            Console.WriteLine(rsa.ExportPrivateKey(RSAKeyType.Pkcs8, true)); // David 說他是用 pkcs8
             Console.WriteLine("++++++++");
             Console.WriteLine("********");
-            Console.WriteLine(rsa.ExportPublicKey(RSAKeyType.Pkcs8, true));
+            Console.WriteLine(rsa.ExportPublicKey(RSAKeyType.Pkcs8, true));  // David 說他是用 pkcs1
             Console.WriteLine("++++++++");
         }
         private static void Encrypt()
