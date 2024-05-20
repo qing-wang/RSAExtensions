@@ -16,7 +16,7 @@ namespace RSAExtensions.ConsoleApp
             Console.WriteLine(rsa.ExportPrivateKey(RSAKeyType.Pkcs8, true)); // David 說他是用 pkcs8
             Console.WriteLine("++++++++");
             Console.WriteLine("********");
-            Console.WriteLine(rsa.ExportPublicKey(RSAKeyType.Pkcs1, true));  // David 說他是用 pkcs1
+            Console.WriteLine(rsa.ExportPublicKey(RSAKeyType.Pkcs8, true));  // David 說他是用 pkcs1
             Console.WriteLine("++++++++");
         }
         private static void Encrypt()
@@ -27,7 +27,7 @@ namespace RSAExtensions.ConsoleApp
             byte[] plainText = Convert.FromBase64String(plainTextBase64);
             var rsa = RSA.Create(1024);
             //
-            rsa.ImportPublicKey(RSAKeyType.Pkcs1, publicKeyPEM, true);
+            rsa.ImportPublicKey(RSAKeyType.Pkcs8, publicKeyPEM, true);
             //
             byte[] cipherText = rsa.Encrypt(plainText, RSAEncryptionPadding.OaepSHA256);
             string cipherTextBase64 = Convert.ToBase64String(cipherText);
@@ -41,7 +41,7 @@ namespace RSAExtensions.ConsoleApp
             byte[] cipherText = Convert.FromBase64String(cipherTextBase64);
             var rsa = RSA.Create(1024);
             //
-            rsa.ImportPrivateKey(RSAKeyType.Pkcs8, privateKeyPEM, true);
+            rsa.ImportPrivateKey(RSAKeyType.Pkcs1, privateKeyPEM, true);
             //
             byte[] plainText = rsa.Decrypt(cipherText, RSAEncryptionPadding.OaepSHA256);
             string plainTextBase64 = Convert.ToBase64String(plainText);
